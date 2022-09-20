@@ -27,6 +27,7 @@ public class Myfilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         log.info("初始化过滤器1");
+        System.out.println("测试git分支合并冲突");
     }
 
     @Override
