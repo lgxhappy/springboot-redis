@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lgx.springbootredis.dao.UserDao">
+    <select id="listUser" resultType="com.lgx.springbootredis.pojo.User">
+        select *
+        from USER
+    </select>
+
+    <select id="listUserByName" parameterType="com.lgx.springbootredis.pojo.query.UserQuery"
+            resultType="com.lgx.springbootredis.pojo.User">
+        select id ,name, pwd
+        from user
+        <where>
+            <if test="name !=null and name !=''">
+                and `name` like concat('%',#{name},'%')
+            </if>
+        </where>
+    </select>
+    <delete id="deleteUserById" parameterType="int">
+        delete
+        from USER
+        where id = #{id}
+    </delete>
+    <select id="queryUserById" resultType="com.lgx.springbootredis.pojo.User">
+        select id, name, pwd
+        from user
+        where id = #{id}
+    </select>
+    <update id="updateUser" parameterType="com.lgx.springbootredis.pojo.User">
+        update user
+        set name=#{name},
+            pwd=#{pwd}
+        where id = #{id}
+    </update>
+    <insert id="addUser" parameterType="com.lgx.springbootredis.pojo.User">
+        insert into user (name, pwd)
+        values (#{name}, #{pwd})
+    </insert>
+    <select id="isUser" parameterType="com.lgx.springbootredis.pojo.User" resultType="int">
+       select count(1) from USER  where name=#{name} and pwd=#{pwd}
+    </select>
+
+</mapper>
