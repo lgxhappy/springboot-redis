@@ -26,7 +26,7 @@ public class Myfilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        log.info("初始化过滤器");
+        log.info("初始化过滤器1");
     }
 
     @Override
