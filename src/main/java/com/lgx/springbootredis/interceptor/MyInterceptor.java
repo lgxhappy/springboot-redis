@@ -20,7 +20,7 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     //再处理请求前进行调用（controller方法调用之前）
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object handler) throws Exception {
-        System.out.println("preHandle被调用");
+        System.out.println("preHandle被调用11");
         //springmvc在拦截其中获得rest风格的变量
         Object loginuser = httpServletRequest.getSession().getAttribute("loginuser");
         if(loginuser!=null) {
